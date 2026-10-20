@@ -1,0 +1,84 @@
+<div class="auth-container">
+  <div class="auth-card glass-panel">
+    
+    <div class="auth-header">
+      <h2>{{ isLoginMode ? 'Giriş Yap' : 'Hesap Oluştur' }}</h2>
+      <p>{{ isLoginMode ? 'Creator Nexus hesabınıza erişin' : 'Gerçek e-posta adresinizle doğrulanmış kayıt olun' }}</p>
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert error">{{ errorMessage }}</div>
+    }
+    
+    @if (successMessage) {
+      <div class="alert success">{{ successMessage }}</div>
+    }
+
+    <div class="social-logins">
+      <button type="button" class="social-btn google-btn" (click)="loginWithGoogle()">
+        <span class="icon">G</span> Google ile Devam Et
+      </button>
+      <button type="button" class="social-btn github-btn" (click)="loginWithGithub()">
+        <span class="icon">🐙</span> GitHub ile Devam Et
+      </button>
+    </div>
+
+    <div class="divider">
+      <span>veya e-posta ile</span>
+    </div>
+
+    <!-- novalidate etiketi tarayıcının butonu engellemesini durdurur -->
+    <form (ngSubmit)="onSubmit()" class="auth-form" novalidate>
+      
+      @if (!isLoginMode) {
+        <div class="form-group">
+          <label>Ad Soyad</label>
+          <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="Örn: Hilal Eser" />
+        </div>
+
+        <div class="form-group">
+          <label>Unvan / Rol</label>
+          <input type="text" [(ngModel)]="title" name="title" placeholder="Örn: Full-Stack Geliştirici" />
+        </div>
+
+        <div class="form-group">
+          <label>Yetenekler (Virgülle ayırın)</label>
+          <input type="text" [(ngModel)]="skills" name="skills" placeholder="Angular, Node.js, MSSQL" />
+        </div>
+      }
+
+      <div class="form-group">
+        <label>E-posta Adresi</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="ornek@domain.com" />
+      </div>
+
+      <div class="form-group">
+        <label>Şifre</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="En az 6 karakter" />
+      </div>
+
+      <!-- RECAPTCHA ALANI (Sadece Kayıt modunda görünür) -->
+      @if (!isLoginMode) {
+        <div class="form-group captcha-container">
+          <!-- Bu Google'ın sağladığı evrensel test anahtarıdır -->
+          <re-captcha (resolved)="resolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha>
+        </div>
+      }
+
+      <button type="submit" class="submit-btn">
+        {{ isLoginMode ? 'Giriş Yap' : 'Kayıt Ol ve Doğrula' }}
+      </button>
+
+    </form>
+
+    <div class="auth-switch">
+      <p>
+        {{ isLoginMode ? 'Hesabınız yok mu?' : 'Zaten hesabınız var mı?' }}
+        <button type="button" (click)="toggleMode()" class="switch-link">
+          {{ isLoginMode ? 'Kayıt Ol' : 'Giriş Yap' }}
+        </button>
+      </p>
+    </div>
+
+  </div>
+</div>

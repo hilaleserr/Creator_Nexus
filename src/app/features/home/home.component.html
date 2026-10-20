@@ -1,0 +1,67 @@
+<div class="home-container">
+  <!-- Hero (Karşılama) Bölümü -->
+  <section class="hero">
+    <h1 class="hero-title">Creator Nexus<br><span>Connect. Create. Build.</span></h1>
+    <h2 class="hero-slogan">Build something worth creating.</h2>
+    <p class="hero-subtext">Fikrini paylaş, doğru insanları bul ve birlikte üret.</p>
+    
+    <div class="hero-actions">
+      <button class="btn-primary" routerLink="/discover">Explore Projects</button>
+      <button class="btn-secondary" routerLink="/project/new">Create a Project</button>
+    </div>
+  </section>
+
+  <!-- Canlı Projeler Bölümü -->
+  <section class="trending-projects">
+    <div class="section-header">
+      <h3>Live Projects</h3>
+      <a routerLink="/discover" class="view-all">View All</a>
+    </div>
+
+    <div class="projects-grid">
+      
+      <!-- Proje Kartı 1 -->
+      <app-glass-card>
+        <div class="project-content">
+          <div class="tags">
+            <span class="tag">AI</span>
+          </div>
+          <h4>AI Image Organizer</h4>
+          <p class="tech-stack">Python / Computer Vision</p>
+          <div class="footer">
+            <span class="members">3 / 5 Members</span>
+          </div>
+        </div>
+      </app-glass-card>
+
+      <!-- Proje Kartı 2 -->
+      <app-glass-card>
+        <div class="project-content">
+          <div class="tags">
+            <span class="tag">Open Source</span>
+          </div>
+          <h4>Open Source Music Tool</h4>
+          <p class="tech-stack">Python / Librosa</p>
+          <div class="footer">
+            <span class="members">4 / 6 Members</span>
+          </div>
+        </div>
+      </app-glass-card>
+
+      <!-- Proje Kartı 3 -->
+      <app-glass-card>
+        <div class="project-content">
+          <div class="tags">
+            <span class="tag">Web</span>
+          </div>
+          <h4>Smart Campus App</h4>
+          <p class="tech-stack">Angular / Node.js</p>
+          <div class="footer">
+            <span class="members">2 / 4 Members</span>
+          </div>
+        </div>
+      </app-glass-card>
+
+    </div>
+  </section>
+</div>

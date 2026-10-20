@@ -1,0 +1,48 @@
+<nav class="nexus-navbar">
+  <div class="navbar-container">
+    
+    <a routerLink="/discover" class="nav-brand">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">Creator Nexus</span>
+    </a>
+    
+    <div class="nav-links">
+      <a routerLink="/discover" routerLinkActive="active" class="nav-link">
+        {{ currentLang === 'TR' ? 'Keşfet' : 'Discover' }}
+      </a>
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+        {{ currentLang === 'TR' ? 'Kontrol Paneli' : 'Dashboard' }}
+      </a>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Tıklanınca TR <-> EN Değiştiren Çeviri Butonu -->
+      <button type="button" (click)="toggleLanguage()" class="lang-switch-btn">
+        🌐 <span>{{ currentLang }}</span>
+      </button>
+
+      <ng-container *ngIf="isLoggedIn; else guestTemplate">
+        <div class="user-menu">
+          <a routerLink="/dashboard" class="profile-avatar" [title]="currentUser?.fullName">
+            {{ currentUser?.fullName ? currentUser.fullName.charAt(0).toUpperCase() : 'H' }}
+          </a>
+          <button type="button" (click)="logout()" class="logout-btn">
+            {{ currentLang === 'TR' ? 'Çıkış Yap' : 'Logout' }}
+          </button>
+        </div>
+      </ng-container>
+      
+      <ng-template #guestTemplate>
+        <!-- Hatanın çözüldüğü nokta: Doğrudan routerLink="/auth" kullanıyoruz -->
+        <a routerLink="/auth" class="login-btn">
+          {{ currentLang === 'TR' ? 'Giriş Yap' : 'Sign In' }}
+        </a>
+      </ng-template>
+    </div>
+
+  </div>
+</nav>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>

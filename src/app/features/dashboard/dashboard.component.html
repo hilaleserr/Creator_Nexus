@@ -1,0 +1,61 @@
+<div class="dashboard-container">
+  
+  <!-- Üst Karşılama Alanı -->
+  <header class="dashboard-header">
+    <div class="welcome-box">
+      <h1>Hoş geldin, <span class="gradient-text">{{ currentUser?.fullName || 'Creator' }}</span> 👋</h1>
+      <p>{{ currentUser?.title || 'Full-Stack Developer' }} • Projelerini ve ekip başvurularını buradan yönet.</p>
+    </div>
+    <a routerLink="/discover" class="create-project-btn">+ Yeni Proje Keşfet</a>
+  </header>
+
+  <!-- İstatistik Kartları -->
+  <section class="stats-grid">
+    <div class="stat-card glass-panel">
+      <span class="stat-icon">📂</span>
+      <div class="stat-info">
+        <h3>Aktif Projelerim</h3>
+        <p class="stat-value">{{ stats.activeProjects }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card glass-panel">
+      <span class="stat-icon">👥</span>
+      <div class="stat-info">
+        <h3>Ekip Başvuruları</h3>
+        <p class="stat-value">{{ stats.teamApplications }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card glass-panel">
+      <span class="stat-icon">⚡</span>
+      <div class="stat-info">
+        <h3>Ortalama Eşleşme</h3>
+        <p class="stat-value">{{ stats.matchRate }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projelerim Listesi -->
+  <section class="my-projects-section">
+    <h2>Yönettiğim Projeler</h2>
+    
+    <div class="projects-list">
+      <div class="project-row glass-panel" *ngFor="let p of myProjects">
+        <div class="project-main-info">
+          <span class="category-tag">{{ p.category }}</span>
+          <h3>{{ p.title }}</h3>
+        </div>
+        
+        <div class="project-meta">
+          <span class="status-badge">{{ p.status }}</span>
+          <span class="team-count">👥 {{ p.teamSize }}</span>
+          <span class="match-score">⚡ %{{ p.matchScore }} Match</span>
+        </div>
+
+        <button class="manage-btn">Yönet</button>
+      </div>
+    </div>
+  </section>
+
+</div>

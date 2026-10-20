@@ -1,0 +1,155 @@
+.home-container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* Karşılama Alanı Stilleri */
+.hero {
+  text-align: center;
+  margin-top: 4rem;
+
+  .hero-title {
+    font-size: 1.2rem;
+    color: #8b949e;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    
+    span {
+      font-size: 0.9rem;
+      display: block;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .hero-slogan {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin: 0 0 1.5rem 0;
+    /* Teknoloji hissi veren gradient renk */
+    background: linear-gradient(90deg, #ffffff, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+  }
+
+  .hero-subtext {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+
+    button {
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: #6366f1;
+      color: white;
+      border: none;
+      
+      &:hover {
+        background-color: #4f46e5;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* Projeler Alanı Stilleri */
+.trending-projects {
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .view-all {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .project-content {
+    .tags {
+      margin-bottom: 1rem;
+      .tag {
+        background: rgba(99, 102, 241, 0.2);
+        color: #a5b4fc;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+    }
+
+    .tech-stack {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1rem;
+    }
+  }
+}

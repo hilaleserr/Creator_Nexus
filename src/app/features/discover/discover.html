@@ -1,0 +1,97 @@
+<div class="discover-container">
+  
+  <header class="discover-header">
+    <div class="header-text">
+      <h1 *ngIf="lang === 'TR'">Projeleri <span class="gradient-text">Keşfet</span></h1>
+      <h1 *ngIf="lang === 'EN'">Explore <span class="gradient-text">Projects</span></h1>
+      <p>
+        {{ lang === 'TR' 
+          ? 'Yeteneklerinle eşleşen projeleri keşfet, doğru takıma katıl ve birlikte üret.' 
+          : 'Discover projects matching your skills, join the right team, and build together.' }}
+      </p>
+    </div>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input 
+        type="text" 
+        (input)="onSearchInput($event)" 
+        [placeholder]="lang === 'TR' ? 'Proje adı, teknoloji veya rol ara (örn: Angular, AI)...' : 'Search project, tech or role (e.g., Angular, AI)...'" 
+      />
+    </div>
+  </header>
+
+  <section class="filters-section">
+    <div class="category-pills">
+      <!-- Hatanın çözüldüğü nokta: cat yerine cat.key kullanıyoruz -->
+      <button 
+        type="button"
+        *ngFor="let cat of categories" 
+        class="pill-btn" 
+        [class.active]="selectedCategory === cat.key"
+        (click)="selectCategory(cat.key)">
+        {{ lang === 'TR' ? cat.tr : cat.en }}
+      </button>
+    </div>
+
+    <div class="skill-filters">
+      <span class="filter-label">{{ lang === 'TR' ? 'Yetenek Filtresi:' : 'Skill Filter:' }}</span>
+      <button 
+        type="button"
+        *ngFor="let skill of popularSkills" 
+        class="skill-chip" 
+        [class.selected]="selectedSkill === skill"
+        (click)="toggleSkill(skill)">
+        #{{ skill }}
+      </button>
+    </div>
+  </section>
+
+  <section class="projects-grid">
+    <div class="project-card-wrapper" *ngFor="let project of filteredProjects">
+      <div class="project-card-inner">
+        
+        <div class="card-top">
+          <span class="category-badge">{{ getCategoryLabel(project.category) }}</span>
+          <span class="match-badge">
+            ⚡ %{{ project.matchScore }} {{ lang === 'TR' ? 'Eşleşme' : 'Nexus Match' }}
+          </span>
+        </div>
+
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-desc">{{ project.description }}</p>
+
+        <div class="roles-section">
+          <span class="section-label">{{ lang === 'TR' ? 'ARANAN ROLLER:' : 'LOOKING FOR:' }}</span>
+          <div class="role-tags">
+            <span class="role-tag" *ngFor="let role of project.lookingFor">{{ role }}</span>
+          </div>
+        </div>
+
+        <div class="skills-row">
+          <span class="tech-tag" *ngFor="let skill of project.skills">{{ skill }}</span>
+        </div>
+
+        <div class="card-footer">
+          <div class="meta-info">
+            <span class="owner">👤 {{ project.owner }}</span>
+            <span class="team-size">👥 {{ project.teamSize }}</span>
+          </div>
+          <button type="button" class="join-btn" (click)="onJoinProject(project)">
+            {{ lang === 'TR' ? 'İncele & Katıl' : 'View & Join' }}
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div *ngIf="filteredProjects.length === 0" class="empty-state">
+    <p>
+      {{ lang === 'TR' 
+        ? 'Aradığın kriterlere uygun proje bulunamadı. Filtreleri temizlemeyi dene.' 
+        : 'No projects found matching your criteria. Try clearing the filters.' }}
+    </p>
+  </div>
+
+</div>
